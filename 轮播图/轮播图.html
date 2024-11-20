@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .div{
+            position: relative;
+            height: 300px;
+            width: 500px;
+            overflow: hidden;
+            margin: 50px auto;
+            background-color: aqua;
+            border-radius: 20px;
+        }
+        .div img{
+            vertical-align: bottom;
+            height: 300px;
+            width: 500px;
+        } 
+        .div i{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            font-size: 30px;
+            color: rgb(52, 47, 45);
+            background-color: #74696065;
+        }
+
+        .div2{
+            opacity: 0;
+        }
+
+        .div .div2:hover{
+            opacity: 1;
+        }
+        .right{
+            left: 0;
+            top: 50%;
+            border-radius: 0 15px 15px 0;
+        }
+        .left{
+            right: 0;
+            top: 50%;
+            border-radius: 15px 0 0 15px;
+        }
+        .point ul{
+            position: absolute;
+            display: flex;
+            left: 10px;
+            bottom: 10px;
+        }
+        .point ul li{
+            list-style-type: none;
+            width: 10px;
+            height: 10px;
+            margin-left: 20px;
+            border-radius: 50%;
+            box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.3);
+            border: solid 2px #fff;
+        }
+        .active{
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="div">
+        <div class="d">
+        <img src="./images/banner1.jpg" alt="" id="pic">
+        </div>
+        <div class="div2">
+        <i class="iconfont icon-zuoce right" id="right"></i>
+        <i class="iconfont icon-youce left" id="left"></i>
+        </div>
+        <div class="point">
+            <ul class="ull">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const img = [{url:"./images/banner1.jpg"},{url:"./images/banner2.jpg"},{url:"./images/banner3.jpg"}]
+        const next = document.querySelector("#right")
+        const after = document.querySelector("#left")
+        let picture = document.querySelector("#pic")
+        let i = 0
+        let f = setInterval(function(){
+            after.click()
+        },1500)
+        const di = document.querySelector(".d")
+        di.addEventListener("mouseleave",function(){
+           f = setInterval(function(){
+            after.click()
+        },1500)
+        })
+        
+        
+        di.addEventListener("mouseover",function(){
+            clearInterval(f)
+        })
+        
+        next.addEventListener("click",function(){
+            console.log(i)
+            i--
+            if(i==-1){
+                i=2
+            }
+            pic.src = img[i]["url"]
+            document.querySelector(".ull .active").classList.remove("active")
+            document.querySelector(`.ull li:nth-child(${i+1})`).classList.add("active")
+        })
+        after.addEventListener("click",function(){
+            console.log(i)
+            i++
+            if(i==img.length){
+                i = 0
+            }
+            pic.src = img[i]["url"]
+            document.querySelector(".ull .active").classList.remove("active")
+            document.querySelector(`.ull li:nth-child(${i+1})`).classList.add("active")
+        })
+    </script>
+</body>
+</html>

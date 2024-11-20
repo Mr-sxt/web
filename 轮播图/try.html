@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration: none;
+        }
+        li{
+            list-style: none;
+        }
+        .c2{
+            margin: 100px auto;
+        }
+        ul{
+            display: flex;
+        }
+        li{
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.5s;
+        }
+        li a{
+            left: 0;
+            top: 0;
+            display: block;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            color: aliceblue;
+            font-size: 20px;
+        }
+        li a:first-child{
+            background-color: rgb(18, 188, 211);
+        }
+        li a:last-child{
+            top: 0;
+            left: 0;
+            background-color: rgb(144, 219, 22);
+            transform: rotateX(90deg) translateZ(75px) translateY(-25px);
+        }
+
+        li:hover{
+            transform: rotateX(-90deg);
+            transform-origin: bottom;
+        }
+
+        img{
+            position: relative;
+            width: 500px;
+            height: 300px;
+            border-radius: 30px;
+        }
+        .c1{
+            margin: 0 auto;
+            width: 500px;
+            height: 500px;
+            position: relative;
+        }
+        .c1::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="c2">
+        <ul>
+            <li><a href="#">首页</a><a href="#">1</a></li>
+            <li><a href="#">下载</a><a href="#">2</a></li>
+            <li><a href="#">合作</a><a href="#">3</a></li>
+            <li><a href="#">联系</a><a href="#">4</a></li>
+        </ul>
+    </div>
+    <div class="c1">
+        <img src="./images/banner1.jpg" alt="">
+    </div>
+</body>
+</html>
